@@ -1,14 +1,18 @@
 <?php
 
-$file_exists = new \Twig_SimpleFunction('file_exists', function($file){
-    return file_exists($file);
+use app\models\admin\Admin;
+use app\src\Flash;
+
+
+$message = new \Twig_SimpleFunction('message', function ($index) {
+	echo Flash::get($index);
 });
 
-$teste = new \Twig_SimpleFunction('teste', function(){
-    echo 'teste';
+$admin = new \Twig_SimpleFunction('admin', function () {
+	return Admin::getUser();
 });
+
 
 return [
-    $file_exists,
-    $teste
+	$message, $admin,
 ];

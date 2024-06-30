@@ -1,0 +1,22 @@
+{% extends 'site/master.html' %}
+
+{% block master %}
+
+<h2>Lista de Musicas</h2>
+
+    <h2>Cadastrar Musica</h2>
+    <a href="/cadastromusica" class="btn btn-success">Cadastrar</a>
+    
+	{% for a in musicas %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{ a.nomemusica }}</h5>
+          <p class="card-text">{{ a.banda }}</p>
+          <a href="/musica/{{a.id}}" class="btn btn-primary">Ver mais...</a>
+        </div>
+      </div>
+    {% endfor %}
+
+
+
+{% endblock %}
