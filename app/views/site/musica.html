@@ -13,7 +13,9 @@
           <p class="card-text">Instrumento:  <span> </span> {{ musicas.instrumento }}</p>
           <p class="card-text">Dificuldade:  <span> </span> {{ musicas.dificuldade }}</p>
           <p class="card-text">Link  <span> </span>{{ musicas.link }}</p>
-        </div>
+          <a href="/atualizar/{{musicas.id}}" class="btn btn-success">atualizar</a>
+          <a href="/deletar/{{musicas.id}}" class="btn btn-danger">deletar</a>
+        </div> 
       </div>
     
 

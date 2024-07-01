@@ -108,4 +108,64 @@ class HomeController extends Controller {
 			
 		]);
     }
+
+    public function update($request,$response,$args) {
+
+		$musica = new Musicas;
+        $musicas = $musica->findBy('id',$args['id']);
+
+		$this->view('site.update', [
+			'title' => 'Update musica',
+            'musicas' => $musicas,
+			
+		]);
+	}
+
+    
+    public function updatemusica($request,$response,$args) {
+        $validate = new Validate;
+        $musicas = new Musicas;
+		$data = $validate->validate([
+			'nomemusica' => 'required',
+			'banda' => 'required',
+			'dificuldade' => 'required',
+			'instrumento' => 'required',
+			'link' => 'required',
+		]);
+
+		if ($validate->hasErrors()) {
+			return back();
+		}
+
+		$updated = $musicas->find('id',$args['id'])->update([
+			'nomemusica' => $data->nomemusica,
+			'banda' => $data->banda,
+			'dificuldade' => $data->dificuldade,
+			'instrumento' => $data->instrumento,
+			'link' => $data->link,
+
+		]);
+
+		if ($updated) {
+			flash('message','Atualizado com sucesso');
+
+			return back();
+		}
+
+		flash('message', 'Erro ao atualizar, tente novamente');
+		return back();
+	}
+
+    
+    public function delete($request,$response,$args) {
+        
+        $musicas = new Musicas;
+		
+
+		$musicaEncontrada = $musicas->find('id',$args['id'])->delete();
+
+		return back();
+	}
+
+
 }

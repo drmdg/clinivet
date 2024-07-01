@@ -1,0 +1,44 @@
+{% extends 'site/master.html' %}
+
+{% block master %}
+
+<form action="/atualizar/{{musicas.id}}/updatemusica" method="post">
+
+    {{ message('message') }}
+    <div class="form-group">
+       <label for="">Nome da Musica</label>
+       <input type="text" name="nomemusica" class="form-control" placeholder="Nome da musica" value="{{ musicas.nomemusica }}">
+       {{ message('nome') }}
+   </div>
+
+   <div class="form-group">
+    <label for="">Banda</label>
+    <input type="text" name="banda" class="form-control" placeholder="Banda" value="{{ musicas.banda }}">
+    {{ message('especie') }}
+    </div>
+
+    <div class="form-group">
+        <label for="">Instrumento</label>
+        <input type="text" name="instrumento" class="form-control" placeholder="Instrumento" value="{{ musicas.instrumento }}">
+        {{ message('raca') }}
+    </div>
+
+    <div class="form-group">
+        <label for="">Dificuldade</label>
+        <input type="text" name="dificuldade" class="form-control" placeholder="Dificuldade" value="{{ musicas.dificuldade }}">
+        {{ message('idade') }}
+    </div>
+
+    <div class="form-group">
+        <label for="">Link</label>
+        <input type="text" name="link" class="form-control" placeholder="Link" value="{{ musicas.link }}">
+        {{ message('clienteId') }}
+    </div>
+
+
+   <button type="submit" class="btn btn-success">Atualizar</button>
+
+</form>
+   
+
+{% endblock %}
