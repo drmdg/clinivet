@@ -1,0 +1,23 @@
+{% extends "site/master.html" %}
+
+{% block content %}
+
+<h2>Create</h2>
+
+{{ messages['message']['message'] | message(messages['message']['alert']) | raw }}
+
+
+<form action="/medicos/store" method="post">
+    <input type="text" name="nome" class="form-control">
+    {{ messages['nome']['message'] | message(messages['nome']['alert']) | raw }}
+    <br>
+    
+    <input type="text" name="crm" class="form-control">
+    {{ messages['crm']['message'] | message(messages['crm']['alert']) | raw }}
+    <br>
+    
+    <button type="submit">Cadastrar</button>
+</form>
+
+
+{% endblock %}

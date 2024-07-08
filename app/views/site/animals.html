@@ -1,0 +1,25 @@
+{% extends "site/master.html" %}
+
+{% block content %}
+
+<h1>Animais</h1>
+<a href="/animals/create" class="btn btn-info">Create</a>
+
+{{ message['message']|message(message['alert']) | raw }}
+
+<ul>
+    {% for animal in animals %}
+    <li>
+        {{ animal.nome }} {{ animal.raca }}
+        <a href="/animals/edit/{{ animal.id }}" class="btn btn-success">Editar</a>
+        <form action="/animals/delete/{{ animal.id }}" method="post">
+            <input type="hidden" name="_METHOD" value="DELETE">
+            <button type="submit" class="btn btn-danger">Deletar</button>
+        </form>
+    </li>
+    {% endfor %}
+
+</ul>
+
+
+{% endblock %}

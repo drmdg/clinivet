@@ -1,0 +1,23 @@
+{% extends "site/master.html" %}
+
+{% block content %}
+
+<h1>Vendas</h1>
+
+{{ message['message']|message(message['alert']) | raw }}
+
+<ul>
+    {% for venda in vendas %}
+    <li>
+        {{ venda.codigo }} {{ venda.valor_total }}
+        <form action="/vendas/delete/{{ venda.id }}" method="post">
+            <input type="hidden" name="_METHOD" value="DELETE">
+            <button type="submit" class="btn btn-danger">Deletar</button>
+        </form>
+    </li>
+    {% endfor %}
+
+</ul>
+
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "site/master.html" %}
+
+{% block content %}
+
+<h2>Produto EDIT</h2>
+
+{{ messages['message']['message'] | message(messages['message']['alert']) | raw }}
+
+
+<form action="/produtos/update/{{ produto.id }}" method="post">
+    <input type="hidden" name="_METHOD" value="PUT">
+    
+    <input type="text" name="codigo" class="form-control" value="{{produto.codigo}}">
+    {{ messages['codigo']['message'] | message(messages['codigo']['alert']) | raw }}
+    <br>
+    
+    <input type="text" name="nome" class="form-control" value="{{produto.nome}}">
+    {{ messages['nome']['message'] | message(messages['nome']['alert']) | raw }}
+    <br>
+    
+    <input type="text" name="descricao" class="form-control" value="{{produto.descricao}}">
+    {{ messages['descricao']['message'] | message(messages['descricao']['alert']) | raw }}
+    <br>
+
+    <input type="number" name="valor" class="form-control" value="{{produto.valor}}">
+    {{ messages['valor']['message'] | message(messages['valor']['alert']) | raw }}
+    <br>
+
+ 
+    <button type="submit">Atualizar</button>
+</form>
+
+
+{% endblock %}

@@ -18,7 +18,12 @@ TwigGlobal::set('logged_in',$_SESSION['is_logged_in'] ?? '');
 TwigGlobal::set('user',$_SESSION['user_logged_data'] ?? '');
 
 require '../app/routers/site.php';
-require '../app/routers/User.php';
+require '../app/routers/user.php';
+require '../app/routers/medico.php';
+require '../app/routers/animal.php';
+require '../app/routers/consulta.php';
+require '../app/routers/venda.php';
+require '../app/routers/produto.php';
 
 $methodOverrideMiddleware= new MethodOverrideMiddleware;
 $app->add($methodOverrideMiddleware);

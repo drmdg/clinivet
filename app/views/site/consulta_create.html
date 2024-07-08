@@ -1,0 +1,32 @@
+{% extends "site/master.html" %}
+
+{% block content %}
+
+<h2>Create Consulta</h2>
+
+{{ messages['message']['message'] | message(messages['message']['alert']) | raw }}
+
+
+<form action="/consultas/store" method="post">
+    <input type="number" name="id_animal" class="form-control">
+    {{ messages['id_animal']['message'] | message(messages['id_animal']['alert']) | raw }}
+    <br>
+    
+    <input type="number" name="id_dono" class="form-control">
+    {{ messages['id_dono']['message'] | message(messages['id_dono']['alert']) | raw }}
+    <br>
+    
+    <input type="number" name="id_medico" class="form-control">
+    {{ messages['id_medico']['message'] | message(messages['id_medico']['alert']) | raw }}
+    <br>
+
+    <input type="text" name="tipo_consulta" class="form-control">
+    {{ messages['tipo_consulta']['message'] | message(messages['tipo_consulta']['alert']) | raw }}
+    <br>
+
+ 
+    <button type="submit">Cadastrar</button>
+</form>
+
+
+{% endblock %}

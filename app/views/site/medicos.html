@@ -1,0 +1,25 @@
+{% extends "site/master.html" %}
+
+{% block content %}
+
+<h1>Medicos</h1>
+<a href="/medicos/create" class="btn btn-info">Create</a>
+
+{{ message['message']|message(message['alert']) | raw }}
+
+<ul>
+    {% for medico in medicos %}
+    <li>
+        {{ medico.nome }} {{ medico.crm }}
+        <a href="/medicos/edit/{{ medico.id }}" class="btn btn-success">Editar</a>
+        <form action="/medicos/delete/{{ medico.id }}" method="post">
+            <input type="hidden" name="_METHOD" value="DELETE">
+            <button type="submit" class="btn btn-danger">Deletar</button>
+        </form>
+    </li>
+    {% endfor %}
+
+</ul>
+
+
+{% endblock %}

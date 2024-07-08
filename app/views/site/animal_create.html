@@ -1,0 +1,36 @@
+{% extends "site/master.html" %}
+
+{% block content %}
+
+<h2>Create</h2>
+
+{{ messages['message']['message'] | message(messages['message']['alert']) | raw }}
+
+
+<form action="/animals/store" method="post">
+    <input type="text" name="nome" class="form-control">
+    {{ messages['nome']['message'] | message(messages['nome']['alert']) | raw }}
+    <br>
+    
+    <input type="date" name="data_nascimento" class="form-control">
+    {{ messages['data_nascimento']['message'] | message(messages['data_nascimento']['alert']) | raw }}
+    <br>
+    
+    <input type="text" name="especie" class="form-control">
+    {{ messages['especie']['message'] | message(messages['especie']['alert']) | raw }}
+    <br>
+
+    <input type="text" name="raca" class="form-control">
+    {{ messages['raca']['message'] | message(messages['raca']['alert']) | raw }}
+    <br>
+
+    <input type="number" name="id_dono" class="form-control">
+    {{ messages['id_dono']['message'] | message(messages['id_dono']['alert']) | raw }}
+    <br>
+
+    
+    <button type="submit">Cadastrar</button>
+</form>
+
+
+{% endblock %}

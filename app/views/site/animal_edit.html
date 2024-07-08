@@ -1,0 +1,37 @@
+{% extends "site/master.html" %}
+
+{% block content %}
+
+<h2>Animal EDIT</h2>
+
+{{ messages['message']['message'] | message(messages['message']['alert']) | raw }}
+
+
+<form action="/animals/update/{{ animal.id }}" method="post">
+    <input type="hidden" name="_METHOD" value="PUT">
+    <input type="text" name="nome" class="form-control" value="{{ animal.nome }}">
+    {{ messages['nome']['message'] | message(messages['nome']['alert']) | raw }}
+    <br>
+    
+    <input type="date" name="data_nascimento" class="form-control" value="{{ animal.data_nascimento }}" >
+    {{ messages['data_nascimento']['message'] | message(messages['data_nascimento']['alert']) | raw }}
+    <br>
+    
+    <input type="text" name="especie" class="form-control" value="{{ animal.especie }}">
+    {{ messages['especie']['message'] | message(messages['especie']['alert']) | raw }}
+    <br>
+
+    <input type="text" name="raca" class="form-control" value="{{ animal.raca }}"> 
+    {{ messages['raca']['message'] | message(messages['raca']['alert']) | raw }}
+    <br>
+
+    <input type="number" name="id_dono" class="form-control" value="{{ animal.id_dono }}">
+    {{ messages['id_dono']['message'] | message(messages['id_dono']['alert']) | raw }}
+    <br>
+
+    
+    <button type="submit">Atualizar</button>
+</form>
+
+
+{% endblock %}

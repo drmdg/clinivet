@@ -1,0 +1,32 @@
+{% extends "site/master.html" %}
+
+{% block content %}
+
+<h2>Create Produtos</h2>
+
+{{ messages['message']['message'] | message(messages['message']['alert']) | raw }}
+
+
+<form action="/produtos/store" method="post">
+    <input type="text" name="codigo" class="form-control">
+    {{ messages['codigo']['message'] | message(messages['codigo']['alert']) | raw }}
+    <br>
+    
+    <input type="text" name="nome" class="form-control">
+    {{ messages['nome']['message'] | message(messages['nome']['alert']) | raw }}
+    <br>
+    
+    <input type="text" name="descricao" class="form-control">
+    {{ messages['descricao']['message'] | message(messages['descricao']['alert']) | raw }}
+    <br>
+
+    <input type="number" name="valor" class="form-control">
+    {{ messages['valor']['message'] | message(messages['valor']['alert']) | raw }}
+    <br>
+
+ 
+    <button type="submit">Cadastrar</button>
+</form>
+
+
+{% endblock %}

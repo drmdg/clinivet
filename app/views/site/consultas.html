@@ -1,0 +1,25 @@
+{% extends "site/master.html" %}
+
+{% block content %}
+
+<h1>Consultas</h1>
+<a href="/consultas/create" class="btn btn-info">Create</a>
+
+{{ message['message']|message(message['alert']) | raw }}
+
+<ul>
+    {% for consulta in consultas %}
+    <li>
+        {{ consulta.tipo_consulta }} {{ consulta.id_animal }}
+        <a href="/consultas/edit/{{ consulta.id }}" class="btn btn-success">Editar</a>
+        <form action="/consultas/delete/{{ consulta.id }}" method="post">
+            <input type="hidden" name="_METHOD" value="DELETE">
+            <button type="submit" class="btn btn-danger">Deletar</button>
+        </form>
+    </li>
+    {% endfor %}
+
+</ul>
+
+
+{% endblock %}

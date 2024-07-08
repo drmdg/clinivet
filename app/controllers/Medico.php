@@ -4,48 +4,47 @@ namespace app\controllers;
 
 use app\classes\Flash;
 use app\classes\Validate;
-use app\database\models\User as ModelsUser;
+use app\database\models\Medicos;
 
-class User extends Base{
+class Medico extends Base{
 
     private $validate;
-    private $user;
+    private $medico;
 
     public function __construct()
     {
         $this->validate = New Validate;
-        $this->user = New ModelsUser;
+        $this->medico = New Medicos;
     }
 
     public function create($request,$response,$args){
        
         $messages = Flash::getAll();
 
-        return $this->getTwig()->render($response,$this->setView('site/user_create'),[
-            'title' => 'User create',
+        return $this->getTwig()->render($response,$this->setView('site/medico_create'),[
+            'title' => 'Medico create',
             'messages' => $messages
         ]);
     }
     public function store($request,$response,$args){
         $nome = filter_input(INPUT_POST,'nome',FILTER_SANITIZE_STRING);
-        $email = filter_input(INPUT_POST,'email',FILTER_SANITIZE_STRING);
-        $password = filter_input(INPUT_POST,'password',FILTER_SANITIZE_STRING);
-
-        $this->validate->required(['nome','email','password'])->exist($this->user,'email',$email);
+        $crm = filter_input(INPUT_POST,'crm',FILTER_SANITIZE_STRING);
+        
+        $this->validate->required(['nome','crm']);
         $errors = $this->validate->getErrors();
 
         if($errors){
             Flash::flashes($errors);
-            return redirect($response,'/user/create');
+            return redirect($response,'/medicos/create');
         }
 
-        $created = $this->user->create(['nome' => $nome,'email' => $email, 'password' => password_hash($password,PASSWORD_DEFAULT)]);
+        $created = $this->medico->create(['nome' => $nome,'crm' => $crm]);
         if($created){
             Flash::set('message','Cadastrado com sucesso');
-            return redirect($response,'/user/create');
+            return redirect($response,'/medicos/create');
         }
         Flash::set('message','Ocorreu um erro ao cadastrar o usuario');
-        return redirect($response,'/user/create');
+        return redirect($response,'/medicos/create');
         
         return $response;
     }
@@ -53,18 +52,18 @@ class User extends Base{
     public function edit($request,$response,$args){
         $id = filter_var($args['id'],FILTER_SANITIZE_NUMBER_INT);
 
-        $user = $this->user->findBy('id',$id);
+        $medico = $this->medico->findBy('id',$id);
 
-        if(!$user){
+        if(!$medico){
             Flash::set('message','Usuário inexistente', 'danger');
             return redirect($response,'/');
         }
 
         $messages = Flash::getAll();
 
-        return $this->getTwig()->render($response,$this->setView('site/user_edit'),[
+        return $this->getTwig()->render($response,$this->setView('site/medico_edit'),[
             'title' => 'User edit',
-            'user' => $user,
+            'medico' => $medico,
             'messages' => $messages
         ]);
     }
@@ -72,58 +71,56 @@ class User extends Base{
     public function update($request,$response,$args){
         
         $nome = filter_input(INPUT_POST,'nome',FILTER_SANITIZE_STRING);
-        $email = filter_input(INPUT_POST,'email',FILTER_SANITIZE_STRING);
-        $password = filter_input(INPUT_POST,'password',FILTER_SANITIZE_STRING);
+        $crm = filter_input(INPUT_POST,'crm',FILTER_SANITIZE_STRING);
         $id = filter_var($args['id'],FILTER_SANITIZE_NUMBER_INT);
         
 
-        $this->validate->required(['nome','email','password']);
+        $this->validate->required(['nome','crm']);
         $errors = $this->validate->getErrors();
 
         if($errors){
             Flash::flashes($errors);
-            return redirect($response,'/user/edit/'.$id);
+            return redirect($response,'/medicos/edit/'.$id);
         }
 
-        $updated = $this->user->update(['fields' =>['nome' => $nome,'email' => $email,'password' => password_hash($password,PASSWORD_DEFAULT)],'where' => ['id' => $id]]);
+        $updated = $this->medico->update(['fields' =>['nome' => $nome,'crm' => $crm],'where' => ['id' => $id]]);
 
         if($updated){
             Flash::set('message','Atualizado com sucesso');
-            return redirect($response,'/user/edit/' . $id);
+            return redirect($response,'/medicos/edit/' . $id);
         }
         Flash::set('message','Erro ao atualizar','danger');
-        return redirect($response,'/user/edit/' . $id);
+        return redirect($response,'/medicos/edit/' . $id);
 
     }
     public function destroy($request,$response,$args){
         $id = filter_var($args['id'],FILTER_SANITIZE_NUMBER_INT);
         
-        $user = $this->user->findBy('id',$id);
+        $medico = $this->medico->findBy('id',$id);
 
-        if(!$user){
-            Flash::set('message','Usuário inexistente', 'danger');
+        if(!$medico){
+            Flash::set('message','Medico     inexistente', 'danger');
             return redirect($response,'/');
         }
 
-        $deleted = $this->user->delete('id',$id);
+        $deleted = $this->medico->delete('id',$id);
         
         if($deleted){
             Flash::set('message','Deletado com sucesso');
-            return redirect($response,'/users');
+            return redirect($response,'/medicos');
         }
         Flash::set('message','Erro ao deletar','danger');
-        return redirect($response,'/users' );
+        return redirect($response,'/medicos' );
 
     }
 
     public function list($request,$response,$args){
-        $users = $this->user->find();
-        
+        $medicos = $this->medico->find();
         $message = Flash::get('message');
 
-        return $this->getTwig()->render($response,$this->setView('site/clientes'),[
-            'title' => 'Clientes',
-            'users' => $users,
+        return $this->getTwig()->render($response,$this->setView('site/medicos'),[
+            'title' => 'Medicos',
+            'medicos' => $medicos,
             'message' => $message
         ]);
 

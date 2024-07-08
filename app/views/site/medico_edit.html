@@ -1,0 +1,25 @@
+{% extends "site/master.html" %}
+
+
+{% block content %}
+
+<h2>EDIT</h2>
+
+
+{{ messages['message']['message'] | message(messages['message']['alert']) | raw }}
+
+<form action="/medicos/update/{{ medico.id }}" method="post">
+    <input type="hidden" name="_METHOD" value="PUT">
+    <input type="text" name="nome" class="form-control" value="{{ medico.nome }}">
+    {{ messages['nome']['message'] | message(messages['nome']['alert']) | raw }}
+    <br>
+    
+    <input type="text" name="crm" class="form-control" value="{{ medico.crm }}">
+    {{ messages['crm']['message'] | message(messages['crm']['alert']) | raw }}
+    <br>
+    
+    <button type="submit">Atualizar</button>
+</form>
+
+
+{% endblock %}

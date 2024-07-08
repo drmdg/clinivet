@@ -1,0 +1,25 @@
+{% extends "site/master.html" %}
+
+{% block content %}
+
+<h1>Clientes</h1>
+<a href="/user/create" class="btn btn-info">Create</a>
+
+{{ message['message']|message(message['alert']) | raw }}
+
+<ul>
+    {% for user in users %}
+    <li>
+        {{ user.nome }} {{ user.email }}
+        <a href="/user/edit/{{ user.id }}" class="btn btn-success">Editar</a>
+        <form action="/user/delete/{{ user.id }}" method="post">
+            <input type="hidden" name="_METHOD" value="DELETE">
+            <button type="submit" class="btn btn-danger">Deletar</button>
+        </form>
+    </li>
+    {% endfor %}
+
+</ul>
+
+
+{% endblock %}

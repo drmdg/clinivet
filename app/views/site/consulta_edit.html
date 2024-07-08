@@ -1,0 +1,34 @@
+{% extends "site/master.html" %}
+
+{% block content %}
+
+<h2>Consulta EDIT</h2>
+
+{{ messages['message']['message'] | message(messages['message']['alert']) | raw }}
+
+
+<form action="/consultas/update/{{ consulta.id }}" method="post">
+    <input type="hidden" name="_METHOD" value="PUT">
+    
+    <input type="number" name="id_animal" class="form-control" value="{{consulta.id_animal}}">
+    {{ messages['id_animal']['message'] | message(messages['id_animal']['alert']) | raw }}
+    <br>
+    
+    <input type="number" name="id_dono" class="form-control" value="{{consulta.id_dono}}">
+    {{ messages['id_dono']['message'] | message(messages['id_dono']['alert']) | raw }}
+    <br>
+    
+    <input type="number" name="id_medico" class="form-control" value="{{consulta.id_medico}}">
+    {{ messages['id_medico']['message'] | message(messages['id_medico']['alert']) | raw }}
+    <br>
+
+    <input type="text" name="tipo_consulta" class="form-control" value="{{consulta.tipo_consulta}}">
+    {{ messages['tipo_consulta']['message'] | message(messages['tipo_consulta']['alert']) | raw }}
+    <br>
+
+ 
+    <button type="submit">Atualizar</button>
+</form>
+
+
+{% endblock %}
