@@ -42,6 +42,7 @@ class Login extends Base{
         if($logged){
             return redirect($response,'/');
         }
+        
         Flash::set('message','Erro ao logar');
         return redirect($response,'/login');
 

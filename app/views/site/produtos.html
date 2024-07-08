@@ -10,7 +10,7 @@
 <ul>
     {% for produto in produtos %}
     <li>
-        {{ produto.nome }} {{ produto.valor }}
+        {{ produto.nome }} {{ produto.valor }} {{ produto.codigo }} {{ produto.descricao }}
         <a href="/produtos/edit/{{ produto.id }}" class="btn btn-success">Editar</a>
         <form action="/produtos/delete/{{ produto.id }}" method="post">
             <input type="hidden" name="_METHOD" value="DELETE">

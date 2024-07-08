@@ -9,7 +9,7 @@
 <ul>
     {% for venda in vendas %}
     <li>
-        {{ venda.codigo }} {{ venda.valor_total }}
+        {{ venda.codigo }} {{ venda.valor_total }} {{ venda.status_venda }} {{ venda.data_venda }} {{ venda.nome_cliente }} 
         <form action="/vendas/delete/{{ venda.id }}" method="post">
             <input type="hidden" name="_METHOD" value="DELETE">
             <button type="submit" class="btn btn-danger">Deletar</button>

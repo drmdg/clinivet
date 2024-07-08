@@ -10,7 +10,7 @@
 <ul>
     {% for animal in animals %}
     <li>
-        {{ animal.nome }} {{ animal.raca }}
+        {{ animal.nome }} {{ animal.raca }} {{ animal.especie }} {{ animal.data_nascimento }} {{animal.nome_dono}}
         <a href="/animals/edit/{{ animal.id }}" class="btn btn-success">Editar</a>
         <form action="/animals/delete/{{ animal.id }}" method="post">
             <input type="hidden" name="_METHOD" value="DELETE">
