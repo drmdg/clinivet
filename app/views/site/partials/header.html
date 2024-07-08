@@ -1,14 +1,57 @@
 <div id="header">
-    <div>
-        <a href="/" class="btn btn-success btn-sm">Home</a>
-        <a href="/user" class="btn btn-success btn-sm">Clientes</a>
-        <a href="/medicos" class="btn btn-success btn-sm">Medicos</a>
-        <a href="/animals" class="btn btn-success btn-sm">Animais</a>
-        <a href="/consultas" class="btn btn-success btn-sm">Consultas</a>
-        <a href="/produtos" class="btn btn-success btn-sm">Produtos</a>
-        <a href="/vendas" class="btn btn-success btn-sm">Vendas</a>
-    </div>
-    
+    <header>
+        <nav id="navbar">
+            <a href="/"><i class="fa-solid fa-paw" id="nav_logo">CLINIVET</i></a>
+
+            <ul id="nav_list">
+                <li class="nav-item active">
+                    <a href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/user">Clientes</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/medicos">Medicos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/animals">Animais</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/consultas">Consultas</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/produtos">Produtos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/vendas">Vendas</a>
+                </li>
+            </ul>
+
+            <button id="mobile_btn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </nav>
+
+        <div id="mobile_menu">
+            <ul id="mobile_nav_list">
+                <li class="nav-item">
+                    <a href="#home">Início</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#menu">Aumigos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#testimonials">Depoimentos</a>
+                </li>
+            </ul>
+
+            <a href="./form.html">
+                <button class="btn-default">
+                    A D O T E
+                </button>
+            </a>
+        </div>
+    </header>
     
     <div>
         {% if logged_in %}
@@ -22,4 +65,6 @@
 
         
     </div>
+
+    
 </div>
