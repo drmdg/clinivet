@@ -58,3 +58,22 @@ $(document).ready(function() {
         distance: '20%'
     })
 });
+
+
+function diminuiQuantidade(id){
+    var inputElement = document.getElementById('itemsNumber' + id);
+    var currentValue = parseInt(inputElement.value) || 0;
+    
+    if(inputElement.value > 0 ){
+        inputElement.value = currentValue - 1;
+    }
+        
+}
+
+function aumentaQuantidade(id){
+    var inputElement = document.getElementById('itemsNumber' + id);
+    var currentValue = parseInt(inputElement.value) || 0;
+    
+    inputElement.value = currentValue + 1;
+
+}

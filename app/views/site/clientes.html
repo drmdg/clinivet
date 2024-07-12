@@ -2,24 +2,42 @@
 
 {% block content %}
 
-<h1>Clientes</h1>
 <a href="/user/create" class="btn btn-info">Create</a>
 
 {{ message['message']|message(message['alert']) | raw }}
-
-<ul>
+<h2 class="section-title">Nossos Clientes</h2>
+<section id="menu">
     {% for user in users %}
-    <li>
-        {{ user.nome }} {{ user.email }}
+    
+
+        <div id="dishes">
+            <div class="dish">
+                <h3 class="dish-title">
+                    {{ user.nome }}
+                </h3>
+                <h6>{{ user.email }}</h6>
+
+
+                <div class="dish-rate">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+
+            </div>
+        </div>
+
+         
         <a href="/user/edit/{{ user.id }}" class="btn btn-success">Editar</a>
         <form action="/user/delete/{{ user.id }}" method="post">
             <input type="hidden" name="_METHOD" value="DELETE">
             <button type="submit" class="btn btn-danger">Deletar</button>
         </form>
-    </li>
+    
+
     {% endfor %}
-
-</ul>
-
+</section>  
 
 {% endblock %}

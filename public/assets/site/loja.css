@@ -1,0 +1,39 @@
+.card{
+    color: var(--main-bg-color);
+    height: 350px;
+    width: 250px;
+    background-color: #f6f6f6;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+}
+.cardDescription{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cardDescription button, .cardDescription input{
+    width: 60%;
+    text-align: center;
+}
+
+.cardName{
+    width: 230px;
+    height: 150px;
+    font-family: 'Alfa Slab One',Arial, Helvetica, sans-serif;
+    font-size: 2rem;
+
+}
+
+.estoqueVirtual{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 250px));
+    gap: 30px;
+    max-width: 100%;
+}
+input{
+    width:50px;
+}
+

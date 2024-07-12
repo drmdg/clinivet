@@ -8,11 +8,11 @@
 
 
 <form action="/medicos/store" method="post">
-    <input type="text" name="nome" class="form-control">
+    <input type="text" name="nome" class="form-control" placeholder="Nome">
     {{ messages['nome']['message'] | message(messages['nome']['alert']) | raw }}
     <br>
     
-    <input type="text" name="crm" class="form-control">
+    <input type="text" name="crm" class="form-control" placeholder="CRM">
     {{ messages['crm']['message'] | message(messages['crm']['alert']) | raw }}
     <br>
     

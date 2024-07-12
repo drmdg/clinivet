@@ -18,7 +18,8 @@ class Login {
         if(password_verify($password,$userFound->password)){
             $_SESSION['user_logged_data'] =[
                 'nome' => $userFound->nome,
-                'email' => $userFound->email
+                'email' => $userFound->email,
+                'id' => $userFound->id
             ];
             $_SESSION['is_logged_in'] = true;
             return true;

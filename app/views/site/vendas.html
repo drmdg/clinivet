@@ -6,18 +6,39 @@
 
 {{ message['message']|message(message['alert']) | raw }}
 
-<ul>
+<h2 class="section-title">Nossas Vendas</h2>
+<section id="menu">
     {% for venda in vendas %}
-    <li>
-        {{ venda.codigo }} {{ venda.valor_total }} {{ venda.status_venda }} {{ venda.data_venda }} {{ venda.nome_cliente }} 
+        <div id="dishes">
+            <div class="dish">
+                <h3 class="dish-title">
+                    Cliente: {{ venda.nome_cliente }} 
+                </h3>
+                <p>
+                    Código: {{ venda.codigo }} <br>
+                    Data: {{ venda.data_venda }} <br>
+                    Valor: {{ venda.valor_total }} 
+                </p>
+
+                <div class="dish-rate">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+
+            </div>
+        </div>
+
         <form action="/vendas/delete/{{ venda.id }}" method="post">
             <input type="hidden" name="_METHOD" value="DELETE">
             <button type="submit" class="btn btn-danger">Deletar</button>
         </form>
-    </li>
+ 
     {% endfor %}
 
-</ul>
+</section>  
 
 
 {% endblock %}

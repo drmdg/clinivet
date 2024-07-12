@@ -8,19 +8,19 @@
 
 
 <form action="/produtos/store" method="post">
-    <input type="text" name="codigo" class="form-control">
+    <input type="text" name="codigo" class="form-control" placeholder="Código">
     {{ messages['codigo']['message'] | message(messages['codigo']['alert']) | raw }}
     <br>
     
-    <input type="text" name="nome" class="form-control">
+    <input type="text" name="nome" class="form-control" placeholder="Nome do produto">
     {{ messages['nome']['message'] | message(messages['nome']['alert']) | raw }}
     <br>
     
-    <input type="text" name="descricao" class="form-control">
+    <input type="text" name="descricao" class="form-control" placeholder="Descrição do produto">
     {{ messages['descricao']['message'] | message(messages['descricao']['alert']) | raw }}
     <br>
 
-    <input type="number" name="valor" class="form-control">
+    <input type="number" name="valor" class="form-control" placeholder="Valor do produto">
     {{ messages['valor']['message'] | message(messages['valor']['alert']) | raw }}
     <br>
 

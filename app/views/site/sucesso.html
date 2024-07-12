@@ -1,0 +1,12 @@
+{% extends "site/master.html" %}
+
+{% block content %}
+
+<h2>VENDA CONCRETIZADA COM SUCESSO</h2>
+
+{{ messages['message']['message'] | message(messages['message']['alert']) | raw }}
+
+
+
+
+{% endblock %}

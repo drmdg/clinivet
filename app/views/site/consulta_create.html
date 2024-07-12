@@ -8,19 +8,19 @@
 
 
 <form action="/consultas/store" method="post">
-    <input type="number" name="id_animal" class="form-control">
+    <input type="number" name="id_animal" class="form-control" placeholder="Id do animal">
     {{ messages['id_animal']['message'] | message(messages['id_animal']['alert']) | raw }}
     <br>
     
-    <input type="number" name="id_dono" class="form-control">
+    <input type="number" name="id_dono" class="form-control" placeholder="Id do dono">
     {{ messages['id_dono']['message'] | message(messages['id_dono']['alert']) | raw }}
     <br>
     
-    <input type="number" name="id_medico" class="form-control">
+    <input type="number" name="id_medico" class="form-control" placeholder="Id do médico">
     {{ messages['id_medico']['message'] | message(messages['id_medico']['alert']) | raw }}
     <br>
 
-    <input type="text" name="tipo_consulta" class="form-control">
+    <input type="text" name="tipo_consulta" class="form-control" placeholder="Tipo de consulta">
     {{ messages['tipo_consulta']['message'] | message(messages['tipo_consulta']['alert']) | raw }}
     <br>
 

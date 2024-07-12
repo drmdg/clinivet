@@ -17,5 +17,17 @@ class Vendas extends Base{
             var_dump($e->getMessage());
         }
     }
+
+    public function findVendaIncompletaByIdUser($id){
+        try{
+            $prepared = $this->connection->prepare("select * from {$this->table} where id_cliente = :{$id} and status_venda = 0");
+            $prepared->bindValue(":{$id}",$id);
+            $prepared->execute();
+            return $prepared->fetch();
+        }catch(PDOException $e){
+            var_dump($e->getMessage());
+        }
+        
+    }
    
 }

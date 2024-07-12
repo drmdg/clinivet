@@ -24,6 +24,8 @@ require '../app/routers/animal.php';
 require '../app/routers/consulta.php';
 require '../app/routers/venda.php';
 require '../app/routers/produto.php';
+require '../app/routers/loja.php';
+
 
 $methodOverrideMiddleware= new MethodOverrideMiddleware;
 $app->add($methodOverrideMiddleware);

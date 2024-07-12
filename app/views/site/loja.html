@@ -1,0 +1,42 @@
+{% extends "site/master.html" %}
+
+{% block content %}
+
+<h2>LOJA</h2>
+
+{{ messages['message']['message'] | message(messages['message']['alert']) | raw }}
+
+
+<main class="estoqueVirtual">
+     
+    {% for produto in produtos %}
+        <div class="card">
+            <div class="cardName">
+                {{ produto.nome }}
+            </div>
+            <div class="cardDescription">
+                <h2>Descrição: {{ produto.descricao }}</h2>
+                <h2>Valor: {{ produto.valor }}</h2>
+            </div>
+            <form action="/loja/{{ produto.id }}" method="post">
+            <div class="compra">
+                <button class="btn btn-danger btn-sm" type="button" onclick="diminuiQuantidade('{{ produto.id }}')"><i class='bx bxs-minus-circle' ></i></i></button>
+                <input type="number" name="itemsNumber{{ produto.id }}" id="itemsNumber{{ produto.id }}">
+                <button class="btn btn-success btn-sm" type="button" onclick="aumentaQuantidade('{{ produto.id }}')"><i class='bx bxs-plus-circle' ></i></i></button>
+            </div>
+            
+                <div>
+                    <button type="submit" class="btn btn-info"> Comprar </button>
+                </div>
+            </form>
+            
+        </div>
+    {% endfor %}
+   
+
+
+</main>
+
+
+
+{% endblock %}

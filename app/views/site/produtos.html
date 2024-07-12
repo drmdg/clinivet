@@ -6,20 +6,40 @@
 <a href="/produtos/create" class="btn btn-info">Create</a>
 
 {{ message['message']|message(message['alert']) | raw }}
-
-<ul>
+<h2 class="section-title">Nossos Produtos</h2>
+<section id="menu">
     {% for produto in produtos %}
-    <li>
-        {{ produto.nome }} {{ produto.valor }} {{ produto.codigo }} {{ produto.descricao }}
+  
+        <div id="dishes">
+            <div class="dish">
+                <h3 class="dish-title">
+                    {{ produto.nome }}
+                </h3>
+                <p>
+                    Descrição: {{ produto.descricao }} <br>
+                    Código: {{ produto.codigo }} <br>
+                    Valor: {{ produto.valor }} 
+                </p>
+                <div class="dish-rate">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+
+            </div>
+        </div>
+
+         
         <a href="/produtos/edit/{{ produto.id }}" class="btn btn-success">Editar</a>
         <form action="/produtos/delete/{{ produto.id }}" method="post">
             <input type="hidden" name="_METHOD" value="DELETE">
             <button type="submit" class="btn btn-danger">Deletar</button>
         </form>
-    </li>
+    
     {% endfor %}
 
-</ul>
-
+</section>  
 
 {% endblock %}

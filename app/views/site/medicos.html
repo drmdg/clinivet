@@ -2,24 +2,38 @@
 
 {% block content %}
 
-<h1>Medicos</h1>
 <a href="/medicos/create" class="btn btn-info">Create</a>
 
 {{ message['message']|message(message['alert']) | raw }}
-
-<ul>
+<h2 class="section-title">Nossos Médicos</h2>
+<section id="menu">
     {% for medico in medicos %}
-    <li>
-        {{ medico.nome }} {{ medico.crm }}
+    <div id="dishes">
+        <div class="dish">
+            <h3 class="dish-title">
+                {{ medico.nome }}
+            </h3>
+            <h6>{{ medico.crm }}</h6>
+
+
+            <div class="dish-rate">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+            </div>
+
+        </div>
+    </div>
         <a href="/medicos/edit/{{ medico.id }}" class="btn btn-success">Editar</a>
         <form action="/medicos/delete/{{ medico.id }}" method="post">
             <input type="hidden" name="_METHOD" value="DELETE">
             <button type="submit" class="btn btn-danger">Deletar</button>
         </form>
-    </li>
+    
     {% endfor %}
 
-</ul>
-
+</section>  
 
 {% endblock %}

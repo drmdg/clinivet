@@ -1,0 +1,38 @@
+{% extends "site/master.html" %}
+
+{% block content %}
+
+<h2>Carrinho</h2>
+
+{{ messages['message']['message'] | message(messages['message']['alert']) | raw }}
+
+<main class="estoqueVirtual">
+     
+    {% for produto in pqtd %}
+        <div class="card">
+            <div class="cardName">
+                {{ produto.nome_produto }}
+            </div>
+            <div class="cardDescription">
+                <h2>Descrição: {{ produto.descricao_produto }}</h2>
+                <h2>Valor: {{ produto.valor_total }}</h2>
+            </div>
+            <form action="/loja/carrinho/delete/{{ produto.id }}" method="get">
+            <div class="compra">
+                <button type="submit" class="btn btn-danger">Deletar</button>
+            </div>
+            </form>
+            
+        </div>
+    {% endfor %}
+
+</main>
+<div>
+    <form action="/loja/carrinho/finalizar" method="post">
+        <div class="compra">
+            <button type="submit" class="btn btn-info">Finalizar Compra</button>
+        </div>
+        </form>
+</div>
+
+{% endblock %}

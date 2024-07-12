@@ -6,20 +6,41 @@
 <a href="/animals/create" class="btn btn-info">Create</a>
 
 {{ message['message']|message(message['alert']) | raw }}
+<h2 class="section-title">Animais de Nossos Clientes</h2>
+<section id="menu">
 
-<ul>
     {% for animal in animals %}
-    <li>
-        {{ animal.nome }} {{ animal.raca }} {{ animal.especie }} {{ animal.data_nascimento }} {{animal.nome_dono}}
+
+    <div id="dishes">
+        <div class="dish">
+            <h3 class="dish-title">
+                {{ animal.nome }}
+            </h3>
+            <p>{{ animal.raca }} <br> {{ animal.especie }} <br> Nascimento: {{ animal.data_nascimento }} <br> Dono: {{animal.nome_dono}} </p>
+
+
+            <div class="dish-rate">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+            </div>
+
+        </div>
+    </div>
+
+            
         <a href="/animals/edit/{{ animal.id }}" class="btn btn-success">Editar</a>
         <form action="/animals/delete/{{ animal.id }}" method="post">
             <input type="hidden" name="_METHOD" value="DELETE">
             <button type="submit" class="btn btn-danger">Deletar</button>
         </form>
-    </li>
+
     {% endfor %}
 
-</ul>
 
+
+</section>  
 
 {% endblock %}
